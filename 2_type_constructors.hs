@@ -30,6 +30,7 @@ myApp f x = f x
 evenF :: Int -> Bool
 evenF x = x `mod` 2 == 0
 
+-- mog
 
 
 
