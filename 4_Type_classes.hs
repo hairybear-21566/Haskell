@@ -13,3 +13,22 @@ instance Descriptive Bool where
 
 describeLen :: Descriptive a => a -> Int
 describeLen x =  length (describe x)
+
+
+-- Define a custom type class MyEq with constraints
+class (Show a, Ord a) => MyEq a where
+    myEquals :: a -> a -> Bool
+    myNotEquals :: a -> a -> Bool
+    myNotEquals x y = not (myEquals x y)  -- Default implementation
+
+-- Create an instance of MyEq for Int
+instance MyEq Int where
+    myEquals x y = x == y
+
+-- Create an instance of MyEq for String
+instance MyEq String where
+    myEquals x y = x == y
+
+main :: IO ()
+main = do
+    print (describeLen (42::Int))  -- Output: "The number 42"
